@@ -1,4 +1,4 @@
-mport turtle
+import turtle
 import random
 
 w = 500
