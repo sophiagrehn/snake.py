@@ -115,9 +115,9 @@ def lost_game():
     pen.clear()
     pen.color("red")
     pen.goto(0, 50)
-    pen.write("Game Over!!!", align="center", font=("Georgia", 50, "normal"))
+    pen.write("GAME OVER!", align="center", font=("Georgia", 50, "normal"))
     pen.goto(0, -50)
-    pen.color("black")  # Set text color to black
+    pen.color("darkgreen")  # Set text color to darkgreen
     pen.write("Press SPACE to play again", align="center", font=("Georgia", 20, "normal"))
     screen.onkey(start_game, "space")  # Set up the space key to start the game again
 
