@@ -86,26 +86,26 @@ def get_distance(pos1, pos2):
     distance = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5
     return distance
 
-def update_score():
-    score_display.clear()
-    score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Georgia", 18, "normal"))
+def update_score(): #denna funktion ansvarar för att uppdatera poängvisningen på skärmen. 
+    score_display.clear() #Genom score_display kan det visa de aktuella poängen 'score' och det högsta poängen 'high score' på skärmen i mitten. 
+    score_display.write("Score: {}  High Score: {}".format(score, high_score), align="center", font=("Georgia", 18, "normal")) #Detta visar nuvarande poäng och det högsta poängen på skärmen, med lämplig justering och typsnittsinställningar.
 
-def go_up():
+def go_up(): #denna funktion kallas när man ska styra ormen uppått. Den ändrar ormens riktning up om den åker ner. 
     global snake_dir
     if snake_dir != "down":
         snake_dir = "up"
 
-def go_right():
+def go_right():#denna funktion kallas när man ska styra ormen till höger. Den ändrar ormens riktning till höger om den åker till vänster.
     global snake_dir
     if snake_dir != "left":
         snake_dir = "right"
 
-def go_down():
+def go_down():#denna funktion kallas när man ska styra ormen nedått. Den ändrar ormens riktning ner om den åker upp. 
     global snake_dir
     if snake_dir != "up":
         snake_dir = "down"
 
-def go_left():
+def go_left(): #denna funktion kallas när man ska styra ormen till vänster. Den ändrar ormens riktning till vänster om den åker till höger.
     global snake_dir
     if snake_dir != "right":
         snake_dir = "left"
