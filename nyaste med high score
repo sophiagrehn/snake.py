@@ -109,30 +109,33 @@ def go_down():#denna funktion kallas när man ska styra ormen nedått. Den ändr
     if snake_dir != "up":
         snake_dir = "down"
 
-def go_left(): #denna funktion kallas när man ska styra ormen till vänster. Den ändrar ormens riktning till vänster om den åker till höger.
+#Denna kod definierar en funktion som används för att ändra ormens riktning till vänster när vänsterpiltangenten trycks ned.
+def go_left():
     global snake_dir
-    if snake_dir != "right":
+    if snake_dir != "right": #kontrollerar om ormen inte redan rör sig åt höger. Om inte, fortsätter koden att ändra ormens riktning till vänster.
         snake_dir = "left"
 
+#Denna kod definierar en funktion som används för att starta seplet om användaren trycker på mellanslagstangenten.
 def start_game():
     global start_button
     start_button.clear()
-    pen.clear()  # Clear the "Game Over" and "Press SPACE to play again" messages
+    pen.clear()  # Tar bort meddelanden "Game Over" och "Press SPACE to play again".
     screen.onkey(go_up, "Up")
     screen.onkey(go_right, "Right")
     screen.onkey(go_down, "Down")
     screen.onkey(go_left, "Left")
     reset()
 
+#funktion som körs när spelet är över(ormen har dött).
 def lost_game():
-    pen.clear()
-    pen.color("red")
-    pen.goto(0, 50)
-    pen.write("Game Over!!!", align="center", font=("Georgia", 50, "normal"))
+    pen.clear() #Tar bort eventuella tidigare meddelanden. 
+    pen.color("red") #Gör färger röd
+    pen.goto(0, 50)  #Visar var det ska stå någonstans
+    pen.write("Game Over!!!", align="center", font=("Georgia", 50, "normal")) #skriver gameover
     pen.goto(0, -50)
-    pen.color("black")  # Set text color to black
+    pen.color("black")  # textfärg blir svart
     pen.write("Press SPACE to play again", align="center", font=("Georgia", 20, "normal"))
-    screen.onkey(start_game, "space")  # Set up the space key to start the game again
+    screen.onkey(start_game, "space")  # mellanslagstangent för att köra igen
 
 screen = turtle.Screen()
 screen.setup(w, h)
@@ -151,20 +154,20 @@ food.shapesize(food_size / 20)
 food.penup()
 
 # Create a Turtle to display the score
-score_display = turtle.Turtle()
-score_display.penup()
-score_display.color("black")
-score_display.goto(0, h/2 - 30)  # Adjust the position of the score display
+score_display = turtle.Turtle() #ny turtle för att visa score
+score_display.penup() #lyfter pennan så inget ritas när ormen kör
+score_display.color("black") #textfärg blir svart
+score_display.goto(0, h/2 - 30)  # flyttar turtle till den önskade positionen för poängdisplayen på skärmen.
 
-start_button = turtle.Turtle()
-start_button.speed(0)
-start_button.color("white")
-start_button.penup()
-start_button.hideturtle()
-start_button.goto(0, -50)
+start_button = turtle.Turtle() #turtle för att skriva meddelande
+start_button.speed(0) #turtles hastighet till 0
+start_button.color("white") #färg blir vit
+start_button.penup() #så att man inte ritar något när turtle kör
+start_button.hideturtle() #dölj turtle
+start_button.goto(0, -50) #flyttar turtle till angivna position
 start_button.write("Press SPACE to Start\nUse arrow keys to play", align="center", font=("Georgia", 50, "normal"))
 
 screen.listen()
 screen.onkey(start_game, "space")
 
-turtle.done()
+turtle.done() #avslutar turtle
