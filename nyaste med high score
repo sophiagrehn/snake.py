@@ -137,21 +137,21 @@ def lost_game():
     pen.write("Press SPACE to play again", align="center", font=("Georgia", 20, "normal"))
     screen.onkey(start_game, "space")  # mellanslagstangent för att köra igen
 
-screen = turtle.Screen()
+screen = turtle.Screen() #skapar en ny turtle skärm 
 screen.setup(w, h)
 screen.title("Snake")
-screen.bgcolor("lightgreen")
-screen.tracer(0)
+screen.bgcolor("lightgreen") 
+screen.tracer(0) #stänger av turtle-skärmen automatiskt
 
-pen = turtle.Turtle("square")
-pen.penup()
+pen = turtle.Turtle("square") 
+pen.penup() #Gör att det inte blir ett spår av ormen
 pen.color("darkgreen")
 
 food = turtle.Turtle()
 food.shape("circle")
 food.color("red")
 food.shapesize(food_size / 20)
-food.penup()
+food.penup() #Flyttar maten utan att lämna märke från tidigare plats
 
 # Create a Turtle to display the score
 score_display = turtle.Turtle() #ny turtle för att visa score
