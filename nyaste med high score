@@ -1,23 +1,24 @@
 import turtle
 import random
 
+#Bredd,höjd delay i spelet på 100 ms. 
 w = 1300
 h = 800
 food_size = 15
 delay = 100
 
-# Offset for snake movement directions
+# Offset för riktning, alla med en delay på 20
 offsets = {
-    "up": (0, 20),
-    "down": (0, -20),
-    "left": (-20, 0),
-    "right": (20, 0)
+    "up": (0, 20), #y-axel
+    "down": (0, -20), #y-axel
+    "left": (-20, 0), #x-axel
+    "right": (20, 0) #x-axel
 }
 
-# Variables for scoring and speed
+# Variabler för hastighet och highscore
 score = 0
 high_score = 0
-initial_delay = delay  # Initial delay for snake movement
+initial_delay = delay  #Detta för att vår hastighet ökar i koden men vi vill senare att det ska återgå till normala
 
 def reset():
     global snake, snake_dir, food_position, pen, score, delay, high_score
@@ -25,11 +26,11 @@ def reset():
     snake_dir = "up"
     food_position = get_random_food_position()
     food.goto(food_position)
-    score = 0
-    update_score()  # Update the score display
-    delay = initial_delay  # Reset delay to initial value
+    score = 0 
+    update_score()  # Uppdaterar highscore på skärmen
+    delay = initial_delay  # Återställer ormens ursprungliga hastighet
     move_snake()
-    pen.color("darkgreen")
+    pen.color("darkgreen") #Färgen på "börja igen"
 
 def move_snake():
     global snake_dir, delay
