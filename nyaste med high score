@@ -62,28 +62,28 @@ def out_of_bounds(pos):
     x, y = pos
     return x < -w/2 or x > w/2 or y < -h/2 or y > h/2
 
-def food_collision():
+def food_collision():#Denna funktion kollar om thet finns kollision mellan ormens huvud och det senaste som ormen åt, dvs mat 
     global food_position, score, delay, high_score
-    if get_distance(snake[-1], food_position) < 20:
-        food_position = get_random_food_position()
+    if get_distance(snake[-1], food_position) < 20:#kalkylerar avståndet mellan ormens huvud och maten 
+        food_position = get_random_food_position()#om avståndet är mindre än 20 så genrerar den positionen av maten 
         food.goto(food_position)
-        score += 1  # Increase score on each collision with food
+        score += 1  # ökar poäng med varje kollision med mat
         if score > high_score:
             high_score = score
-        update_score()  # Update the score display
-        delay -= 5  # Decrease delay to increase speed
+        update_score()  # uppdaterar poängen
+        delay -= 5  # minska delay för att öka speed
         return True
     return False
 
 def get_random_food_position():
-    x = random.randint(- w / 2 + food_size, w / 2 - food_size)
+    x = random.randint(- w / 2 + food_size, w / 2 - food_size)#random.randit gör så att den genrerar olika platser mellan x och y koordinaterna 
     y = random.randint(- h / 2 + food_size, h / 2 - food_size)
     return (x, y)
 
-def get_distance(pos1, pos2):
+def get_distance(pos1, pos2): #tar två argument som är tuples som reptresenterar x,y kordinaterna av två punktiker i 2D
     x1, y1 = pos1
     x2, y2 = pos2
-    distance = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5
+    distance = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5 #funktion som kalkylerar avståndet 
     return distance
 
 def update_score(): #denna funktion ansvarar för att uppdatera poängvisningen på skärmen. 
